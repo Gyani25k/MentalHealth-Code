@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GGSIPU Mental Health Calendar 2025–26</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --jan: #1A5276; --jan-lt: #D6EAF8;
+  --feb: #6C3483; --feb-lt: #E8DAEF;
+  --mar: #0E6655; --mar-lt: #D1F2EB;
+  --apr: #922B21; --apr-lt: #FADBD8;
+  --may: #1A5276; --may-lt: #D6EAF8;
+  --jun: #566573; --jun-lt: #EAECEE;
+  --jul: #784212; --jul-lt: #FAE5D3;
+  --aug: #1E8449; --aug-lt: #D5F5E3;
+  --sep: #7B241C; --sep-lt: #FADBD8;
+  --oct: #9A7D0A; --oct-lt: #FEF9E7;
+  --nov: #154360; --nov-lt: #D6EAF8;
+  --dec: #4A235A; --dec-lt: #F4ECF7;
+  --navy: #0D1B2A;
+  --gold: #C9A84C;
+  --cream: #FAF8F3;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 3rem 2rem;
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-circles {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-circles span {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,168,76,0.12);
+  animation: pulse 8s ease-in-out infinite;
+}
+.hero-circles span:nth-child(1) { width: 600px; height: 600px; top: -200px; right: -150px; animation-delay: 0s; }
+.hero-circles span:nth-child(2) { width: 400px; height: 400px; bottom: -100px; left: -100px; animation-delay: 2s; }
+.hero-circles span:nth-child(3) { width: 250px; height: 250px; top: 30%; left: 10%; animation-delay: 4s; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.03); }
+}
+
+.hero-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.4rem 1.2rem;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.1;
+  max-width: 900px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.4s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.55);
+  text-align: center;
+  margin-top: 1.5rem;
+  max-width: 500px;
+  line-height: 1.7;
+  opacity: 0;
+  animation: fadeUp 1s 0.6s forwards;
+}
+
+.hero-cta {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeUp 1s 0.8s forwards;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+
+.btn-outline {
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+.hero-stats {
+  position: absolute;
+  bottom: 2.5rem;
+  display: flex;
+  gap: 3rem;
+  opacity: 0;
+  animation: fadeUp 1s 1s forwards;
+}
+
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.stat-lbl {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PILLARS ── */
+.pillars-section {
+  padding: 6rem 2rem;
+  background: var(--navy);
+  border-top: 1px solid rgba(201,168,76,0.2);
+}
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.pillar {
+  padding: 2.5rem 1.5rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s;
+  cursor: default;
+}
+.pillar:hover { background: rgba(201,168,76,0.06); }
+
+.pillar-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.pillar-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.pillar-months {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+}
+
+/* ── NAV TABS ── */
+.nav-section {
+  background: var(--navy);
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  flex-shrink: 0;
+  padding: 1.1rem 1.1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.03em;
+}
+.nav-tab:hover { color: rgba(255,255,255,0.7); }
+.nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── CALENDAR SECTION ── */
+.calendar-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* Month card */
+.month-card {
+  display: none;
+  animation: cardIn 0.5s ease forwards;
+}
+.month-card.visible { display: block; }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.month-header {
+  border-radius: 16px 16px 0 0;
+  padding: 2.5rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.month-header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 250px; height: 250px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+
+.month-header::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+.month-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.month-theme-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.1);
+  padding: 0.3rem 0.9rem;
+  border-radius: 100px;
+  margin-top: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.month-theme {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.month-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.key-dates-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 1;
+}
+
+.key-date-pill {
+  font-size: 0.72rem;
+  font-family: 'DM Mono', monospace;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  letter-spacing: 0.05em;
+}
+
+/* Weeks grid */
+.weeks-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #E0DBD0;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+}
+
+.week-col {
+  background: #fff;
+  padding: 1.8rem 1.5rem;
+}
+
+.week-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: rgba(0,0,0,0.3);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #E8E4DC;
+}
+
+.week-activity {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  margin-bottom: 0.9rem;
+}
+
+.activity-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 0.45rem;
+  flex-shrink: 0;
+}
+
+.activity-text {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Outcome bar */
+.outcome-bar {
+  border-radius: 0 0 16px 16px;
+  margin-top: 1px;
+  padding: 1.2rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.outcome-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.outcome-text {
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Signature activities */
+.sig-section {
+  padding: 5rem 2rem;
+  background: var(--navy);
+}
+
+.sig-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.sig-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1.8rem;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  cursor: default;
+}
+.sig-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  background: rgba(201,168,76,0.04);
+  transform: translateY(-3px);
+}
+
+.sig-month {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.sig-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.4rem;
+}
+.sig-fmt {
+  font-size: 0.77rem;
+  color: rgba(255,255,255,0.4);
+}
+
+/* Helplines */
+.helplines-section {
+  padding: 5rem 2rem;
+  background: #F5F2EC;
+}
+
+.helplines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.helpline-card {
+  background: #fff;
+  border: 1px solid #E8E4DC;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.helpline-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+.hl-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.hl-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #922B21;
+  margin-bottom: 0.3rem;
+}
+.hl-hours {
+  font-size: 0.72rem;
+  color: #888;
+}
+.hl-special {
+  font-size: 0.72rem;
+  color: #888;
+  margin-top: 0.2rem;
+}
+
+/* Footer */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 0.82rem;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+footer strong { color: var(--gold); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .weeks-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { gap: 2rem; }
+  .month-header { padding: 1.8rem 1.5rem; }
+  .month-name { font-size: 2rem; }
+}
+@media (max-width: 500px) {
+  .weeks-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-circles">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="hero-badge">Academic Year 2025 – 2026</div>
+  <h1 class="hero-title">
+    Mental Health &amp;<br><em>Wellness Calendar</em>
+  </h1>
+  <p class="hero-sub">Guru Gobind Singh Indraprastha University · Student Welfare &amp; Mental Health Cell · New Delhi</p>
+  <div class="hero-cta">
+    <a href="#calendar" class="btn-gold">Explore Calendar</a>
+    <a href="#helplines" class="btn-outline">Helplines</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">12</div><div class="stat-lbl">Months</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-lbl">Activities</div></div>
+    <div class="stat"><div class="stat-num">7</div><div class="stat-lbl">Helplines</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-lbl">Pillars</div></div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars-section">
+  <p class="section-label">Framework</p>
+  <h2 class="section-title">Five Wellness Pillars</h2>
+  <div class="pillars-grid">
+    <div class="pillar">
+      <div class="pillar-icon">🔍</div>
+      <div class="pillar-name">Awareness</div>
+      <div class="pillar-months">JAN · OCT · JUL</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🌱</div>
+      <div class="pillar-name">Resilience</div>
+      <div class="pillar-months">AUG · DEC</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🤝</div>
+      <div class="pillar-name">Connection</div>
+      <div class="pillar-months">FEB · SEP</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🧘</div>
+      <div class="pillar-name">Wellbeing</div>
+      <div class="pillar-months">MAR · NOV</div>
+    </div>
+    <div class="pillar">
+      <div class="pillar-icon">🎨</div>
+      <div class="pillar-name">Expression</div>
+      <div class="pillar-months">APR · MAY</div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV + CALENDAR -->
+<section id="calendar">
+  <nav class="nav-section">
+    <div class="nav-inner" id="monthNav"></div>
+  </nav>
+  <div class="calendar-section" id="calendarSection"></div>
+</section>
+
+<!-- SIGNATURE ACTIVITIES -->
+<section class="sig-section">
+  <p class="section-label" style="color:var(--gold)">Highlights</p>
+  <h2 class="section-title">Signature Activities</h2>
+  <div class="sig-grid" id="sigGrid"></div>
+</section>
+
+<!-- HELPLINES -->
+<section class="helplines-section" id="helplines">
+  <p class="section-label" style="color:var(--navy);opacity:0.5">Emergency Support</p>
+  <h2 class="section-title" style="color:var(--navy)">Mental Health Helplines · India</h2>
+  <div class="helplines-grid" id="helplinesGrid"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>GGSIPU Student Welfare &amp; Mental Health Cell</strong></p>
+  <p style="margin-top:0.5rem">Guru Gobind Singh Indraprastha University · Dwarka, New Delhi · Academic Year 2025–26</p>
+  <p style="margin-top:1rem;font-style:italic;color:rgba(255,255,255,0.3)">"Every conversation about mental health is a step toward a healthier campus."</p>
+</footer>
+
+<script>
+const months = [
+  {
+    id: "jan", name: "January", year: "2026",
+    color: "#1A5276", lt: "#D6EAF8",
+    theme: "Blue Monday, Seasonal Wellness & Day of Wellbeing",
+    quote: "Even in the coldest month, your warmth matters.",
+    keyDates: ["Blue Monday — 3rd Mon of Jan", "Jan 24 — Intl Day of Wellbeing Education"],
+    weeks: [
+      ["Blue Monday awareness stall — myth-busting seasonal depression", "Distribute 'Winter Warmth' self-care booklets", "Movie screening + group discussion on seasonal mood shifts"],
+      ["Seasonal Affective Disorder (SAD) awareness workshop", "Art therapy: paint your mood — expressing winter blues", "Peer sharing circle: 'What helps me on hard days'"],
+      ["Jan 24 Main Event — Wellbeing Education Day on campus", "Guest talk: psychologist on emotional regulation", "DIY self-care kit making + Wellbeing pledge wall"],
+      ["Gratitude journaling 7-day challenge", "Warm-up yoga & outdoor stretching session", "'Light Up' photo campaign — share what makes you smile"]
+    ],
+    outcome: "Every student aware of seasonal depression & at least one coping strategy"
+  },
+  {
+    id: "feb", name: "February", year: "2026",
+    color: "#6C3483", lt: "#E8DAEF",
+    theme: "Relationships, Kindness & Eating Disorder Awareness",
+    quote: "Connection is the antidote to suffering.",
+    keyDates: ["Kindness Week (Feb)", "Valentine's Day — Feb 14", "Eating Disorders Awareness Week"],
+    weeks: [
+      ["Kindness Week launch — random acts of kindness challenge", "Kindness wall: sticky notes of appreciation across campus", "Boundary-setting & healthy relationships workshop"],
+      ["Valentine's Day — Love yourself first: self-compassion workshop", "Healthy vs. unhealthy relationships session", "Anonymous gratitude card exchange across departments"],
+      ["Eating Disorder Awareness Week — documentary + discussion", "Body positivity art installation on campus", "Workshop: nutrition, body image & mental health (with dietitian)"],
+      ["Podcast Talk Show — Live recording on campus", "Topic: Love, Loss & Mental Health — students & counsellor panel", "Open-mic: poetry, stories on connection & heartbreak"]
+    ],
+    outcome: "Launch peer buddy system; reduce isolation through community building"
+  },
+  {
+    id: "mar", name: "March", year: "2026",
+    color: "#0E6655", lt: "#D1F2EB",
+    theme: "Digital Wellbeing, Sleep Health & Self-Harm Awareness",
+    quote: "Unplug to reconnect — with yourself.",
+    keyDates: ["Mar 8 — International Women's Day", "Self-Harm Awareness Day (Mar)", "World Sleep Day — Mar 15"],
+    weeks: [
+      ["Digital Wellbeing Week — screen time audit workshop", "Social media detox challenge (24-hour, voluntary)", "Talk: how doomscrolling affects mental health"],
+      ["Face Painting Stall — Digital Detox Carnival (no phones!)", "Games, creative stalls, face art, offline fun", "Debrief: what did you notice without your phone?"],
+      ["Sleep Health Awareness — 'Why sleep is your superpower'", "Sleep diary activity: track & improve for 7 days", "Relaxation playlist & sleep meditation shared to all students"],
+      ["Self-Harm Awareness Day — safe, non-triggering format", "'Scars to Stars' — student artwork on healing (anonymous)", "Display: alternative coping strategies poster boards"]
+    ],
+    outcome: "100+ students participate in sleep diary; measurable reduction in screen fatigue"
+  },
+  {
+    id: "apr", name: "April", year: "2026",
+    color: "#922B21", lt: "#FADBD8",
+    theme: "Stress Awareness Month — Manage, Express & Survive Exams",
+    quote: "You are not your stress. You are bigger than it.",
+    keyDates: ["April — Stress Awareness Month", "Day of Silence (April)", "Final exams begin"],
+    weeks: [
+      ["Stress Awareness Month launch — 'What stresses you?' anonymous wall", "Stress management poster competition (department-wise)", "Burnout prevention seminar — signs, causes, solutions"],
+      ["Nukkad Natak (Street Play) — theme: student stress & seeking help", "Performed at canteen, main gate & library area", "Debrief circle after play — audience Q&A with counsellor"],
+      ["Day of Silence — awareness for LGBTQ+ struggles & social pressure", "Students observe silent hour; wear awareness ribbons", "Break-the-silence forum — open sharing with counsellor"],
+      ["Pre-final exam coping bootcamp", "Extended drop-in counselling Mon–Sat", "'You've got this' motivational cards at exam halls"]
+    ],
+    outcome: "Every student has a written stress-management plan before final exams"
+  },
+  {
+    id: "may", name: "May", year: "2026",
+    color: "#1A5276", lt: "#D6EAF8",
+    theme: "Mental Health Matters — Listening, Learning & Community Care",
+    quote: "Mental health is not a destination, but a practice.",
+    keyDates: ["May — Mental Health Awareness Month", "World Mental Health Action Day"],
+    weeks: [
+      ["Mental Health Awareness Month launch event", "Bookmark & small card distribution with mental health messages", "'Mental Health Matters' display boards across all departments"],
+      ["Listening Circle (professional-led) — open safe space to share", "Topic 1: Academic pressure | Topic 2: Family stress", "No advice, only listening — safe space format"],
+      ["Mental health quiz & awareness game stalls", "Peer storytelling: 'My journey with mental health'", "Zine-making: students create mini mental health zines"],
+      ["Year-end appreciation for peer counsellors & volunteers", "Annual mental health impact report displayed on board", "Summer self-care guide given to all students before break"]
+    ],
+    outcome: "100+ students attend listening circles; bookmarks distributed campus-wide"
+  },
+  {
+    id: "jun", name: "June", year: "2026",
+    color: "#566573", lt: "#EAECEE",
+    theme: "Summer Break — Rest, Recharge & Backend Planning",
+    quote: "Rest is not laziness. It is an act of self-care.",
+    keyDates: ["Summer Break — No classes", "24x7 Helplines active", "Staff planning month"],
+    weeks: [
+      ["No formal events — students on summer break", "Digital self-care resource pack shared on all platforms", "Social media campaign: #SummerMindfulness — daily wellness tips"],
+      ["Wellness team internal review — what worked, what to improve", "Data compilation: attendance, counselling logs, survey results", "Volunteer appreciation certificates prepared"],
+      ["Planning retreat: draft activities for next academic cycle", "Update resource booklets, posters & helpline boards", "Identify guest speakers & facilitators for next year"],
+      ["Finalise calendar for new academic year", "Print materials — posters, bookmarks, self-care kits", "Prepare freshers orientation mental health module"]
+    ],
+    outcome: "Full readiness for July 2026 freshers orientation; impact report published"
+  },
+  {
+    id: "jul", name: "July", year: "2026",
+    color: "#784212", lt: "#FAE5D3",
+    theme: "Equality, Safety & Gender Sensitisation",
+    quote: "Safety is a right. Equality is a responsibility.",
+    keyDates: ["GGSIPU Semester Opens", "Freshers Week", "POSH Awareness Day"],
+    weeks: [
+      ["Freshers orientation: mental health 101 & campus support services", "Counsellor & peer counsellor meet-and-greet", "Safe space policy announced & displayed on campus"],
+      ["Gender sensitisation workshop — stereotypes, bias & impact", "Theatre activity: role-reversal skits on gender roles", "'Break the Mould' — anti-stereotype art wall installation"],
+      ["LGBTQ+ inclusion & allyship workshop", "Safe spaces mapping — where students can go for support", "Pronoun awareness & respect campaign"],
+      ["POSH (Prevention of Sexual Harassment) awareness session", "Campus safety audit walk — students & welfare officer together", "Resource board: gender helplines & legal rights posted"]
+    ],
+    outcome: "100% freshers attend gender sensitisation; safe-reporting mechanism introduced"
+  },
+  {
+    id: "aug", name: "August", year: "2026",
+    color: "#1E8449", lt: "#D5F5E3",
+    theme: "Grief Awareness & Remembrance",
+    quote: "Grief is the price of love — and that price is worth it.",
+    keyDates: ["Aug 15 — Independence Day Remembrance", "National Grief Awareness Day — Aug 30"],
+    weeks: [
+      ["Grief Awareness Week launch — normalising loss & mourning", "'In Memory' wall: students anonymously share who they remember", "Safe grief circle — facilitated by professional counsellor"],
+      ["Independence Day (Aug 15) — remembrance tie-in & reflective journaling", "Workshop: coping with loss, change & transitions", "Book corner: recommended reads on grief & healing"],
+      ["Grief support drop-in sessions — low-pressure, no agenda", "Documentary screening: stories of loss & resilience", "Art therapy: create a memory — painting, collage or letter"],
+      ["'Carry Me With You' — lantern/light ceremony (symbolic remembrance)", "Resilience & post-traumatic growth session", "Distribute grief resource cards: helplines & support groups"]
+    ],
+    outcome: "Students equipped with healthy grief language; grief drop-in established permanently"
+  },
+  {
+    id: "sep", name: "September", year: "2026",
+    color: "#7B241C", lt: "#FADBD8",
+    theme: "Suicide Prevention — Look Out for Each Other",
+    quote: "Your presence matters. Notice. Reach. Stay.",
+    keyDates: ["Sep 10 — World Suicide Prevention Day", "Walk of Hope: Sep 10", "Nukkad Natak: Sep 10"],
+    weeks: [
+      ["QPR (Question, Persuade, Refer) training for peer counsellors", "'Look Out for Each Other' awareness campaign launch", "Anonymous check-in: 'How are you really?' weekly form"],
+      ["Walk of Hope (Sep 10) — campus walk, ribbons & pledge", "Nukkad Natak — 3 locations: canteen, main gate, library", "Candle remembrance vigil — safe, supportive format"],
+      ["Safe messaging training for all student leaders", "Panel discussion: supporters share (anonymised, voluntary)", "'Invisible Load' exhibit — anonymous submissions on inner struggles"],
+      ["Crisis response drill — what to do if a peer is in crisis", "Helpline visibility campaign — every washroom, hostel, classroom", "Faculty sensitisation: how to identify a struggling student"]
+    ],
+    outcome: "Every student knows 2+ warning signs & one person to contact for help"
+  },
+  {
+    id: "oct", name: "October", year: "2026",
+    color: "#9A7D0A", lt: "#FEF9E7",
+    theme: "Bullying Prevention & ADHD Awareness",
+    quote: "Different minds. Equal worth. Zero tolerance for bullying.",
+    keyDates: ["Oct 10 — World Mental Health Day", "October — ADHD Awareness Month", "Anti-Bullying Week (Oct)"],
+    weeks: [
+      ["World Mental Health Day (Oct 10) — main annual campus event", "Anti-Bullying Awareness Week launch — pledge wall", "Bystander training: how to safely intervene when you see bullying"],
+      ["Myth vs. fact session on ADHD — open to all students", "Anonymous slips activity: 'Share your ADHD experience or question'", "Counsellor reads & responds to slips — anonymous format"],
+      ["ADHD Student Chaupal — informal open circle for students with ADHD", "Peer facilitator + counsellor guided, no formal structure", "Study hacks & brain-friendly learning strategies workshop"],
+      ["Cyberbullying awareness session & digital safety resources", "'Different Minds' art wall: celebrating neurodiversity", "Closing: students write one kind note to someone different from them"]
+    ],
+    outcome: "ADHD Chaupal established as monthly recurring space; anti-bullying policy displayed"
+  },
+  {
+    id: "nov", name: "November", year: "2026",
+    color: "#154360", lt: "#D6EAF8",
+    theme: "Men's Mental Health & Gratitude",
+    quote: "Real strength is knowing when you need support.",
+    keyDates: ["November — Men's Mental Health Month", "Movember Campaign", "International Men's Day — Nov 19"],
+    weeks: [
+      ["Men's Mental Health Month launch — breaking the 'man up' myth", "'How are you, really?' — reaching out to men in your life", "Safe space circle specifically for male-identifying students"],
+      ["Movember awareness — men's health, suicide & depression stats", "Podcast-style panel: men sharing their mental health journeys", "Anger management & emotional regulation workshop"],
+      ["Gratitude Wall installation — main building & hostel blocks", "Gratitude challenge: 7 days, one thing daily on the wall", "Faculty participation in gratitude wall — modelling openness"],
+      ["Men's mental health resource booklet launch", "Counselling drop-in: men-specific session hours announced", "Gratitude wall photographs displayed & archived for year-end"]
+    ],
+    outcome: "Gratitude wall has 500+ entries; men's-specific support session established"
+  },
+  {
+    id: "dec", name: "December", year: "2026",
+    color: "#4A235A", lt: "#F4ECF7",
+    theme: "Individuality, AIDS Awareness & Student Recommendations",
+    quote: "You are one of a kind. Your needs are valid. Your voice matters.",
+    keyDates: ["Dec 1 — World AIDS Day", "Student Recommendation Day", "Holiday Season Loneliness Awareness"],
+    weeks: [
+      ["World AIDS Day (Dec 1) — destigmatisation & mental health link session", "HIV/AIDS awareness: fact vs. stigma workshop", "Resource cards with AIDS helplines & testing centres shared"],
+      ["'This is Me' photo wall — students share what makes them unique", "Neurodiversity & individual accommodations awareness", "Workshop: self-advocacy — asking for what you need"],
+      ["Student Recommendations Day — 'You said, we did'", "Welfare cell presents changes made based on student feedback", "Co-create next year's calendar: students vote on activities"],
+      ["End-of-year reflection circle", "DIY self-care kit giveaway — personalised for personality types", "24x7 helplines & digital resources promoted for winter break"]
+    ],
+    outcome: "Student voice embedded in next year's plan; AIDS awareness reaches 200+ students"
+  }
+];
+
+const sigActivities = [
+  { month: "JANUARY", name: "Blue Monday Awareness Stall", fmt: "Interactive stall + discussion" },
+  { month: "FEBRUARY", name: "Podcast Talk Show", fmt: "Live campus recording" },
+  { month: "MARCH", name: "Face Painting — Digital Detox Carnival", fmt: "Fun offline carnival stall" },
+  { month: "APRIL", name: "Nukkad Natak (Street Play)", fmt: "Outdoor campus performance" },
+  { month: "APRIL", name: "Day of Silence", fmt: "Silent awareness hour" },
+  { month: "MAY", name: "Listening Circles (Professional-led)", fmt: "Facilitated safe-space circle" },
+  { month: "MAY", name: "Bookmarks & Mental Health Cards", fmt: "Campus-wide distribution" },
+  { month: "SEPTEMBER", name: "Walk of Hope", fmt: "Campus solidarity walk" },
+  { month: "SEPTEMBER", name: "Nukkad Natak", fmt: "3 campus locations" },
+  { month: "OCTOBER", name: "ADHD Student Chaupal", fmt: "Informal open circle" },
+  { month: "OCTOBER", name: "Anonymous Slips Activity", fmt: "ADHD Q&A — counsellor responds" },
+  { month: "NOVEMBER", name: "Gratitude Wall", fmt: "Participatory campus art wall" },
+  { month: "AUGUST", name: "Grief Remembrance Workshop", fmt: "Workshop + art + light ceremony" },
+  { month: "DECEMBER", name: "Student Recommendations Day", fmt: "Feedback + co-creation event" },
+];
+
+const helplines = [
+  { name: "iCall (TISS Mumbai)", num: "9152987821", hours: "Mon–Sat, 8am–10pm", special: "Students & youth" },
+  { name: "Vandrevala Foundation", num: "1860-2662-345", hours: "24x7", special: "Crisis & counselling" },
+  { name: "NIMHANS Helpline", num: "080-46110007", hours: "24x7", special: "All mental health" },
+  { name: "Snehi", num: "044-24640050", hours: "24x7", special: "Emotional support" },
+  { name: "iMind", num: "9741064524", hours: "Mon–Sat", special: "Depression & anxiety" },
+  { name: "AASRA", num: "9820466627", hours: "24x7", special: "Suicide prevention" },
+  { name: "Parivarthan", num: "6136390", hours: "Mon–Fri", special: "Counselling" },
+];
+
+// Build nav tabs
+const nav = document.getElementById('monthNav');
+months.forEach((m, i) => {
+  const btn = document.createElement('button');
+  btn.className = 'nav-tab' + (i === 0 ? ' active' : '');
+  btn.textContent = m.name;
+  btn.dataset.idx = i;
+  btn.onclick = () => switchMonth(i);
+  nav.appendChild(btn);
+});
+
+// Build month cards
+const calSection = document.getElementById('calendarSection');
+months.forEach((m, i) => {
+  const card = document.createElement('div');
+  card.className = 'month-card' + (i === 0 ? ' visible' : '');
+  card.id = `month-${m.id}`;
+
+  const keyPills = m.keyDates.map(d => `<span class="key-date-pill">${d}</span>`).join('');
+
+  const weekCols = m.weeks.map((wk, wi) => `
+    <div class="week-col">
+      <div class="week-label">Week ${wi + 1}</div>
+      ${wk.map(a => `
+        <div class="week-activity">
+          <div class="activity-dot" style="background:${m.color}"></div>
+          <div class="activity-text">${a}</div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+
+  card.innerHTML = `
+    <div class="month-header" style="background:${m.color}">
+      <div class="month-name">${m.name} ${m.year}</div>
+      <div class="month-theme-tag">WELLNESS THEME</div>
+      <div class="month-theme">${m.theme}</div>
+      <div class="month-quote">"${m.quote}"</div>
+      <div class="key-dates-bar">${keyPills}</div>
+    </div>
+    <div class="weeks-grid">${weekCols}</div>
+    <div class="outcome-bar" style="background:${m.lt}">
+      <div class="outcome-label" style="color:${m.color}">OUTCOME GOAL</div>
+      <div class="outcome-text" style="color:${m.color}">${m.outcome}</div>
+    </div>
+  `;
+  calSection.appendChild(card);
+});
+
+function switchMonth(idx) {
+  document.querySelectorAll('.month-card').forEach((c, i) => {
+    c.classList.toggle('visible', i === idx);
+  });
+  document.querySelectorAll('.nav-tab').forEach((t, i) => {
+    t.classList.toggle('active', i === idx);
+  });
+}
+
+// Build signature activities
+const sigGrid = document.getElementById('sigGrid');
+sigActivities.forEach(s => {
+  const card = document.createElement('div');
+  card.className = 'sig-card';
+  card.innerHTML = `
+    <div class="sig-month">${s.month}</div>
+    <div class="sig-name">${s.name}</div>
+    <div class="sig-fmt">${s.fmt}</div>
+  `;
+  sigGrid.appendChild(card);
+});
+
+// Build helplines
+const hlGrid = document.getElementById('helplinesGrid');
+helplines.forEach(h => {
+  const card = document.createElement('div');
+  card.className = 'helpline-card';
+  card.innerHTML = `
+    <div class="hl-name">${h.name}</div>
+    <div class="hl-num">${h.num}</div>
+    <div class="hl-hours">${h.hours}</div>
+    <div class="hl-special">${h.special}</div>
+  `;
+  hlGrid.appendChild(card);
+});
+</script>
+</body>
+</html>
